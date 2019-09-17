@@ -38,6 +38,7 @@ var updatePhelpsLab = function() {
 
    */
   var doc = Listing.findOneAndUpdate({"name": "Phelps Lab"},{"address":"1954 Museum Rd, Gainesville, FL 32503"}, {new : true}, function(err, data) {});
+  console.log(doc);
 };
 var retrieveAllListings = function() {
   /* 
