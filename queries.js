@@ -37,17 +37,22 @@ var updatePhelpsLab = function() {
     Correct Address: 1953 Museum Rd, Gainesville, FL 32603
 
    */
-  var doc = Listing.findOneAndUpdate({"name": "Phelps Lab"}, {new : true}, function(err, data) {});
+  var doc = Listing.findOneAndUpdate({"name": "Phelps Lab"},{"address":"1954 Museum Rd, Gainesville, FL 32503"}, {new : true}, function(err, data) {});
 };
 var retrieveAllListings = function() {
   /* 
     Retrieve all listings in the database, and log them to the console. 
    */
   var doc;
-  Listing.entries.forEach(element => {
-    doc = Listing.findOne({"name": element.name});
-    console.log(doc);
+  var obj;
+  fs.readFile('listings.json', 'utf8', function(err, data) {
+    obj = JSON.parse(data);
+    obj.entries.forEach(element => {
+      doc = Listing.findOne({"name": element.name});
+      console.log(doc);
+    });
   });
+
 };
 
 findLibraryWest();
